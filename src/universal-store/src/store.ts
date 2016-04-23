@@ -1,8 +1,8 @@
 import {Injectable} from 'angular2/core';
 
 export abstract class StoreBackend {
-  getValue(key: string): any {}
-  setValue(key: string, value: any): any {}
+  abstract getValue(key: string): any {}
+  abstract setValue(key: string, value: any): any {}
 }
 
 @Injectable()

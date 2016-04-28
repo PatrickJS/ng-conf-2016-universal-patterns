@@ -47,8 +47,10 @@ function ngApp(req, res) {
       NODE_ROUTER_PROVIDERS,
       NODE_HTTP_PROVIDERS,
     ],
+
     async: true,
-    preboot: true
+
+    preboot: false
   };
 
   res.render('index', config);

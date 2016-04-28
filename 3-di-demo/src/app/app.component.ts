@@ -1,17 +1,10 @@
 import {Component, Directive, ElementRef, Renderer} from 'angular2/core';
+import {FORM_DIRECTIVES} from 'angular2/common';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http} from 'angular2/http';
 
 
-@Directive({
-  selector: '[x-large]'
-})
-export class XLarge {
-  constructor(element: ElementRef, renderer: Renderer) {
-    // we must interact with the dom through Renderer for webworker/server to see the changes
-    renderer.setElementStyle(element.nativeElement, 'fontSize', 'x-large');
-  }
-}
+import {Store} from '../universal-store/src/store';
 
 
 @Directive({
@@ -47,7 +40,7 @@ export class About {
   selector: 'app',
   directives: [
     ...ROUTER_DIRECTIVES,
-    XLarge,
+    ...FORM_DIRECTIVES,
     Autofocus
   ],
   styles: [`
@@ -61,18 +54,21 @@ export class About {
       <a [routerLink]=" ['./Home'] ">Home</a>
       <a [routerLink]=" ['./About'] ">About</a>
     </nav>
-    <div>
-      <span x-large>Hello, {{ name }}!</span>
-    </div>
 
-    name: <input type="text" [value]="name" (input)="name = $event.target.value" autofocus>
-    <pre>{{ data | json }}</pre>
+    <form (ngSubmit)="onSubmit()">
+      <label>
+        name:
+        <input type="text" [(ngModel)]="data" autofocus>
+      </label>
+    </form>
+
 
     <main>
       <router-outlet></router-outlet>
     </main>
 
-    <h1>{{ serverMessage }}</h1>
+    <pre>this.data = {{ data | json }}</pre>
+    <pre>this.store.get('data') = {{ store.get('data') | json }}</pre>
 
   </div>
   `
@@ -84,21 +80,15 @@ export class About {
   { path: '/**', redirectTo: ['Home'] }
 ])
 export class App {
-  name: string = 'Angular 2';
-  data = {};
-  serverMessage = '';
-  constructor(public http: Http) {
+  data = 'ng-conf';
+  constructor(public store: Store) {
 
   }
-  ngOnInit() {
-    // setTimeout(() => {
-    //   this.serverMessage = 'Rendered on the Server';
-    // }, 10);
-    // // // we need to use full urls for the server to work
-    // this.http.get('/data.json')
-    //   .subscribe(res => {
-    //     this.data = res.json();
-    //   });
+
+  onSubmit() {
+    this.store.set('data', this.data);
+    this.data = '';
   }
+
 
 }

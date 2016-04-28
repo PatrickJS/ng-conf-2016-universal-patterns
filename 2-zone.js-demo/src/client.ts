@@ -12,7 +12,16 @@ import {App} from './app/app.component';
 enableProdMode();
 
 
-bootstrap(App, [
-  ...BROWSER_ROUTER_PROVIDERS,
-  ...BROWSER_HTTP_PROVIDERS
-]);
+setTimeout(() => {
+
+  bootstrap(App, [
+    ...BROWSER_ROUTER_PROVIDERS,
+    ...BROWSER_HTTP_PROVIDERS
+  ])
+  .then(setClientRenderedEl);
+
+}, 2000);
+
+function setClientRenderedEl() {
+  document.querySelector('#serverDiv').innerHTML = 'ClientRendered';
+}

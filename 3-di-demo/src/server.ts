@@ -16,6 +16,8 @@ import {
   ExpressEngineConfig
 } from 'angular2-universal';
 
+import {NODE_STORE_PROVIDERS} from './universal-store/src/node';
+
 // Application
 import {App} from './app/app.component';
 
@@ -44,8 +46,9 @@ function ngApp(req, res) {
     ],
     providers: [
       provide(REQUEST_URL, {useValue: url}),
-      NODE_ROUTER_PROVIDERS,
-      NODE_HTTP_PROVIDERS,
+      ...NODE_ROUTER_PROVIDERS,
+      ...NODE_HTTP_PROVIDERS,
+      ...NODE_STORE_PROVIDERS
     ],
     async: true,
     preboot: true

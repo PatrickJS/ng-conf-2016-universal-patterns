@@ -91,14 +91,14 @@ export class App {
 
   }
   ngOnInit() {
-    // setTimeout(() => {
-    //   this.serverMessage = 'Rendered on the Server';
-    // }, 10);
-    // // // we need to use full urls for the server to work
-    // this.http.get('/data.json')
-    //   .subscribe(res => {
-    //     this.data = res.json();
-    //   });
+    setTimeout(() => {
+      this.serverMessage = 'Rendered on the Server';
+    }, 10);
+
+    this.http.get('/data.json')
+      .subscribe(res => {
+        this.data = res.json();
+      });
   }
 
 }

@@ -1,8 +1,12 @@
 import {Injectable} from 'angular2/core';
 
-export abstract class StoreBackend {
-  abstract getValue(key: string): any;
-  abstract setValue(key: string, value: any): any;
+export class StoreBackend {
+  getValue(key: string): any {
+    throw new Error('Error Backend');
+  }
+  setValue(key: string, value: any): any {
+    throw new Error('Error Backend');
+  }
 }
 
 @Injectable()
@@ -12,7 +16,9 @@ export class Store {
   get(key) {
     return this.backend.getValue(key);
   }
+
   set(key, value) {
     return this.backend.setValue(key, value);
   }
+
 }

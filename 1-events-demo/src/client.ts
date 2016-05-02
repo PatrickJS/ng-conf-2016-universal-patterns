@@ -6,17 +6,11 @@ import {App} from './app/app.component';
 
 enableProdMode();
 
-
-
-setTimeout(() => {
-
+(<any>window).runBootstrap = function () {
   bootstrap(App)
     .then(setClientRenderedEl);
-
-
-}, 2000);
-
+};
 
 function setClientRenderedEl() {
-  document.querySelector('#serverDiv').innerHTML = 'ClientRendered';
+  document.querySelector('h1 > b').innerHTML = 'Client Rendered';
 }

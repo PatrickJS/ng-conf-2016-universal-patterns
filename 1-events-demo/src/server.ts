@@ -26,9 +26,7 @@ function ngApp(req, res) {
     platformProviders: [
       provide(ORIGIN_URL, {useValue: 'http://localhost:3000'})
     ],
-
-    preboot: true
-
+    preboot: false
   };
 
   res.render('index', config);

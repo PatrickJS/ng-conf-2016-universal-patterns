@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Angular 2 Universal Starter</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Angular 2 Universal">
+  <meta name="keywords" content="Angular 2,Universal">
+  <meta name="author" content="PatrickJS">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <base href="/">
+  <style>
+    body {font-family:Verdana, sans-serif}
+    h1 {text-align:center;margin:40px;color:#444;font-size:40px}
+    h1 > b {font-weight:bold}
+    .buttons {width:600px;margin:20px auto}
+    .btn {margin:20px;width:256px;font-size:40px;background-color:#36434b;color:#fff;display:inline-block;border:none;padding:20px}
+    .btn:hover {cursor:pointer}
+    .myInput {color:#444;font-size:60px;width:50%;margin:20px 25%;border-radius:20px;padding:20px;border:solid #ddd 1px;outline-width:0}
+    .keyContainer {color:#444;font-size:20px;width:50%;margin:10px 25%}
+  </style>
+</head>
+<body>
+  <h1>Current View: <b>Server Rendered</b></h1>
+  <div class="buttons">
+    <button class="btn" onclick="runBootstrap()">Bootstrap</button>
+    <button class="btn" onclick="replayEvents()">Replay</button>
+  </div>
+
+  <app>
+    Loading...
+  </app>
+
+  <script src="/dist/client/bundle.js"></script>
+</body>
+</html>

@@ -18,6 +18,36 @@
     .myInput {color:#444;font-size:60px;width:50%;margin:20px 25%;border-radius:20px;padding:20px;border:solid #ddd 1px;outline-width:0}
     .keyContainer {color:#444;font-size:20px;width:50%;margin:10px 25%}
   </style>
+  <script>
+
+    var myEvents = [];
+    var myInputValue;
+
+    // record all keyup events on client view myInput
+    function recordEvents() {
+      document.querySelector('.myInput')
+        .addEventListener('keyup', function (event) {
+          myEvents.push(event);
+          myInputValue = event.target.value;
+        });
+    }
+
+    // play back all keyup events on server view myInput
+    function replayEvents() {
+      var myInput = document.querySelector('.myInput');
+
+      myEvents.forEach(function (event) {
+        myInput.dispatchEvent(event);
+      });
+
+      myInput.value = myInputValue;
+    }
+
+    //  starting recording as soon as the window has loaded
+    window.addEventListener('load', recordEvents);
+
+  </script>
+
 </head>
 <body>
   <h1>Current View: <b>Server Rendered</b></h1>

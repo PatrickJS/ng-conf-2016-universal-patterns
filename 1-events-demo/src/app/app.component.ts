@@ -2,6 +2,8 @@ import {NgFor} from 'angular2/common';
 import {Component} from 'angular2/core';
 import {Autofocus} from './autofocus';
 
+const IGNORE_KEY_CODE = [16, 17, 91];
+
 @Component({
   selector: 'app',
   directives: [NgFor, Autofocus],
@@ -16,6 +18,10 @@ export class App {
   keys: string[] = [];
 
   showKey(event) {
-    this.keys.push(String.fromCharCode(event.keyCode));
+    let keyCode = event.keyCode;
+
+    if (IGNORE_KEY_CODE.indexOf(keyCode) < 0) {
+      this.keys.push(String.fromCharCode(keyCode));
+    }
   }
 }

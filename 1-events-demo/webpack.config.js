@@ -70,7 +70,7 @@ var defaultConfig = {
   resolve: {
     root: path.join(__dirname, '/src')
   }
-}
+};
 
 
 var webpackMerge = require('webpack-merge');
@@ -80,7 +80,7 @@ module.exports = [
 
   // Server
   webpackMerge({}, defaultConfig, commonConfig, serverConfig)
-]
+];
 
 
 

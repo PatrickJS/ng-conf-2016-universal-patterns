@@ -26,18 +26,13 @@ app.set('view engine', 'html');
 
 
 function ngApp(req, res) {
-
-  let config = {
+  res.render('index', {
     directives: [ App ],
     platformProviders: [
       provide(ORIGIN_URL, {useValue: 'http://localhost:3000'})
     ],
-
-    preboot: true
-
-  };
-
-  res.render('index', config);
+    preboot: false
+  });
 }
 
 // Serve static files

@@ -40,6 +40,7 @@ function ngApp(req, res) {
   let url = req.originalUrl || '/';
 
   let config: ExpressEngineConfig = {
+    // directives: [ Noop ],
     directives: [ App ],
     platformProviders: [
       provide(ORIGIN_URL, {useValue: 'http://localhost:3000'}),

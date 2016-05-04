@@ -1,6 +1,8 @@
-export var inMemoryStore = {};
+// or redis
+export var inMemoryStore = {
+  data: 'ng-conf 2016'
+};
 
-// TODO(gdi2290): redis
 
 export class NodeBackend {
   getValue(prop) {
@@ -10,3 +12,6 @@ export class NodeBackend {
     return inMemoryStore[prop] = value;
   }
 }
+
+
+// App,

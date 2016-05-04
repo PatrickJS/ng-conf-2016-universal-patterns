@@ -19,7 +19,7 @@ function checkCount() {
 }
 
 
-
+// [checkStable, task, task, checkStable]
 function waitForAsync(value) {
 
   var awaitForMe = new Promise(resolve => {
@@ -56,4 +56,3 @@ function waitForAsync(value) {
 
 
     // nope
-// [checkStable, task, task, task, task, task, checkStable]

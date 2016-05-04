@@ -10,13 +10,23 @@
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
   <base href="/">
-
+  <style>
+    body {font-family:Verdana, sans-serif}
+    h1 {text-align:center;margin:40px;color:#444;font-size:40px}
+    h1 > .server {font-weight:bold;color:#d55e5c}
+    h1 > .client {font-weight:bold;color:#638E3C}
+    .buttons {width:600px;margin:20px auto}
+    .btn {margin:20px;width:256px;font-size:40px;color:#fff;display:inline-block;border:none;padding:20px;outline:none}
+    .btn:hover {cursor:pointer}
+    .bootstrapBtn {background-color:#36434b}
+    .replayBtn {background-color:#fff}
+    .myInput {color:#444;font-size:60px;width:50%;margin:20px 25%;border-radius:20px;padding:20px;border:solid #ddd 1px;outline-width:0}
+    .keyContainer {color:#444;font-size:20px;width:50%;margin:10px 25%}
+  </style>
 </head>
 <body>
-  
-  <div id="serverDiv">
-    ServerRendered
-  </div>
+
+  <h1>Current View: <span class="server">Server Rendered</span><span class="client"></span></h1>
 
   <app>
     Loading...

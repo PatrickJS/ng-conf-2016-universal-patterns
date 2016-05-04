@@ -1,7 +1,0 @@
-{
-  "main": "./node.js",
-  "browser": "./browser.js",
-  "scripts": {
-    "build": "tsc || true"
-  }
-}

@@ -1,19 +1,10 @@
-import {Component, Directive, ElementRef, Renderer} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http} from 'angular2/http';
 
 
 import {Store} from '../universal-store/src/store';
-
-@Directive({
-  selector: '[autofocus]'
-})
-export class Autofocus {
-  constructor(element: ElementRef, renderer: Renderer) {
-    renderer.invokeElementMethod(element.nativeElement, 'focus', []);
-  }
-}
 
 
 @Component({
@@ -39,8 +30,7 @@ export class About {
   selector: 'app',
   directives: [
     ...ROUTER_DIRECTIVES,
-    ...FORM_DIRECTIVES,
-    Autofocus
+    ...FORM_DIRECTIVES
   ],
   styles: [`
     .router-link-active {
@@ -80,21 +70,17 @@ export class About {
 ])
 export class App {
   data = 'ng-conf';
-  store = {
-    get: (prop) => {
-      // TODO(gdi2290): isNode, isBrowser
-      if (typeof localStorage !== undefined) {
-        return localStorage.getItem(prop);
-      }
-    },
-    set(prop, value) {
-      if (typeof localStorage !== undefined) {
-        return localStorage.setItem(prop, value);
-      }
-    }
-  };
+  // doesn't work on server
+  // store = {
+  //   get: (prop) => {
+  //     return localStorage.getItem(prop);
+  //   },
+  //   set(prop, value) {
+  //     return localStorage.setItem(prop, value);
+  //   }
+  // };
   constructor(
-    // public store: Store
+    public store: Store
   ) {
 
   }

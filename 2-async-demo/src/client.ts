@@ -11,17 +11,30 @@ import {App} from './app/app.component';
 
 enableProdMode();
 
-
-setTimeout(() => {
-
-  bootstrap(App, [
+function main() {
+  return bootstrap(App, [
     ...BROWSER_ROUTER_PROVIDERS,
     ...BROWSER_HTTP_PROVIDERS
   ])
   .then(setClientRenderedEl);
+}
 
-}, 2000);
+setTimeout(() => main(), 2000);
 
-function setClientRenderedEl() {
-  document.querySelector('#serverDiv').innerHTML = 'ClientRendered';
+
+
+
+
+
+
+
+
+
+
+function setClientRenderedEl(componentRef) {
+  document.querySelector('.server').innerHTML = '';
+  document.querySelector('.client').innerHTML = 'Client Rendered';
+  document.querySelector('.replayBtn').setAttribute('style', 'background-color:#36434b;');
+
+  return componentRef;
 }

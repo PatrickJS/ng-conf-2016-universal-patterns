@@ -14,16 +14,6 @@ export class XLarge {
 }
 
 
-@Directive({
-  selector: '[autofocus]'
-})
-export class Autofocus {
-  constructor(element: ElementRef, renderer: Renderer) {
-    renderer.invokeElementMethod(element.nativeElement, 'focus', []);
-  }
-}
-
-
 @Component({
   selector: 'home',
   template: `
@@ -47,8 +37,7 @@ export class About {
   selector: 'app',
   directives: [
     ...ROUTER_DIRECTIVES,
-    XLarge,
-    Autofocus
+    XLarge
   ],
   styles: [`
     .router-link-active {
@@ -65,14 +54,14 @@ export class About {
       <span x-large>Hello, {{ name }}!</span>
     </div>
 
-    name: <input type="text" [value]="name" (input)="name = $event.target.value" autofocus>
+    name: <input type="text" [(ngModel)]="name" autofocus>
     <pre>{{ data | json }}</pre>
 
     <main>
       <router-outlet></router-outlet>
     </main>
 
-    <h1>{{ serverMessage }}</h1>
+    <h3>{{ serverMessage }}</h3>
 
   </div>
   `
@@ -86,7 +75,7 @@ export class About {
 export class App {
   name: string = 'Angular 2';
   data = {};
-  serverMessage = '';
+  serverMessage = 'setTimeout not Rendered';
   constructor(public http: Http) {
 
   }
@@ -94,7 +83,7 @@ export class App {
 
     setTimeout(() => {
       this.serverMessage =
-        'Rendered on the Server';
+        'setTimeout Rendered';
     }, 10);
 
     this.http.get('/data.json')

@@ -1,22 +1,53 @@
 import 'angular2-universal/polyfills';
 
-import {bootstrap, enableProdMode} from 'angular2-universal';
+import {
+  bootstrap,
+  enableProdMode
+} from 'angular2-universal';
 
 import {App} from './app/app.component';
 
 enableProdMode();
 
-(<any>window).runBootstrap = function () {
+function main() {
+  // preboot: true in server.ts
   bootstrap(App)
     .then(setClientRenderedEl);
+
+}
+
+// setTimeout(main, 4000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(<any>window).runBootstrap = function () {
+  bootstrap(App)
+    .then(setClientRenderedEl)
+    .then(compRef => {
+      (<any>window).runBootstrap = () => {};
+      return compRef;
+    });
 };
 
-// setTimeout(function () {
-//   bootstrap(App)
-//     .then(setClientRenderedEl);
-// }, 3000);
-
-function setClientRenderedEl() {
+function setClientRenderedEl(componentRef) {
   document.querySelector('.server').innerHTML = '';
   document.querySelector('.client').innerHTML = 'Client Rendered';
   document.querySelector('.replayBtn').setAttribute('style', 'background-color:#36434b;');
@@ -24,6 +55,7 @@ function setClientRenderedEl() {
   var bootstrapBtn = document.querySelector('.bootstrapBtn');
   bootstrapBtn.innerHTML = 'Bootstrapped';
   bootstrapBtn.setAttribute('style', 'color:rgba(26,138,182,1);background-color:#fff');
+  return componentRef;
 }
 
 var origReplayEvents = (<any>window).replayEvents;

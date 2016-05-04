@@ -25,17 +25,7 @@ function ngApp(req, res) {
     platformProviders: [
       provide(ORIGIN_URL, {useValue: 'http://localhost:3000'})
     ],
-    preboot: true
-
-    // preboot: {
-    //   start:    true,
-    //   appRoot:  'app',         // selector for root element
-    //   replay:   'rerender',    // rerender replay strategy
-    //   buffer:   true,          // client app will write to hidden div until bootstrap complete
-    //   debug:    false,
-    //   uglify:   false,
-    //   presets:  ['keyPress', 'buttonPress', 'focus']
-    // }
+    preboot: false
   });
 }
 

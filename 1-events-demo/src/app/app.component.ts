@@ -7,7 +7,7 @@ const IGNORE_KEY_CODE = [8, 13, 16, 17, 91];
   selector: 'app',
   directives: [NgFor],
   template: `
-    <input class="myInput" type="text" (keyup)="showKey($event)">
+    <input class="myInput" type="text" (keyup)="showKey($event)" autofocus>
     <div class="keyContainer">
       <div class="keyDisplay" *ngFor="let key of keys">Key pressed: {{key}}</div>
     </div>

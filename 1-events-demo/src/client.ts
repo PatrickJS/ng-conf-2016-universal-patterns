@@ -6,15 +6,15 @@ import {App} from './app/app.component';
 
 enableProdMode();
 
-// (<any>window).runBootstrap = function () {
-//   bootstrap(App)
-//     .then(setClientRenderedEl);
-// };
-
-setTimeout(function () {
+(<any>window).runBootstrap = function () {
   bootstrap(App)
     .then(setClientRenderedEl);
-}, 4000);
+};
+
+// setTimeout(function () {
+//   bootstrap(App)
+//     .then(setClientRenderedEl);
+// }, 3000);
 
 function setClientRenderedEl() {
   document.querySelector('.server').innerHTML = '';

@@ -91,14 +91,17 @@ export class App {
 
   }
   ngOnInit() {
+
     setTimeout(() => {
-      this.serverMessage = 'Rendered on the Server';
+      this.serverMessage =
+        'Rendered on the Server';
     }, 10);
 
     this.http.get('/data.json')
       .subscribe(res => {
         this.data = res.json();
       });
+
   }
 
 }

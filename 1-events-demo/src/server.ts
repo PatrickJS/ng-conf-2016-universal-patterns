@@ -20,16 +20,23 @@ app.set('view engine', 'html');
 
 
 function ngApp(req, res) {
-
-  let config = {
+  res.render('index', {
     directives: [ App ],
     platformProviders: [
       provide(ORIGIN_URL, {useValue: 'http://localhost:3000'})
     ],
-    preboot: false
-  };
+    preboot: true
 
-  res.render('index', config);
+    // preboot: {
+    //   start:    true,
+    //   appRoot:  'app',         // selector for root element
+    //   replay:   'rerender',    // rerender replay strategy
+    //   buffer:   true,          // client app will write to hidden div until bootstrap complete
+    //   debug:    false,
+    //   uglify:   false,
+    //   presets:  ['keyPress', 'buttonPress', 'focus']
+    // }
+  });
 }
 
 // Serve static files

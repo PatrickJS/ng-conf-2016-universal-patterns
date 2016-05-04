@@ -1,16 +1,15 @@
 import {NgFor} from 'angular2/common';
 import {Component} from 'angular2/core';
-import {Autofocus} from './autofocus';
 
-const IGNORE_KEY_CODE = [16, 17, 91];
+const IGNORE_KEY_CODE = [8, 13, 16, 17, 91];
 
 @Component({
   selector: 'app',
-  directives: [NgFor, Autofocus],
+  directives: [NgFor],
   template: `
-    <input class="myInput" type="text" (keyup)="showKey($event)" autofocus>
+    <input class="myInput" type="text" (keyup)="showKey($event)">
     <div class="keyContainer">
-      <div class="keyDisplay" *ngFor="#key of keys">Key pressed: {{key}}</div>
+      <div class="keyDisplay" *ngFor="let key of keys">Key pressed: {{key}}</div>
     </div>
   `
 })
@@ -21,7 +20,7 @@ export class App {
     let keyCode = event.keyCode;
 
     if (IGNORE_KEY_CODE.indexOf(keyCode) < 0) {
-      this.keys.push(String.fromCharCode(keyCode));
+      this.keys.push(String.fromCharCode(keyCode).toLowerCase());
     }
   }
 }

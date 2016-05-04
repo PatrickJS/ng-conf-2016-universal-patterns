@@ -28,11 +28,11 @@
 
     // record all keyup events on client view myInput
     function recordEvents() {
-      document.querySelector('.myInput')
-        .addEventListener('keyup', function (event) {
-          myEvents.push(event);
-          myInputValue = event.target.value;
-        });
+      var $myInput = document.querySelector('.myInput')
+      $myInput.addEventListener('keyup', function (event) {
+        myEvents.push(event);
+        myInputValue = event.target.value;
+      });
     }
 
     // play back all keyup events on server view myInput

@@ -37,14 +37,14 @@
 
     // play back all keyup events on server view myInput
     function replayEvents() {
-      var myInput = document.querySelector('.myInput');
+      var $myInput = document.querySelector('.myInput');
 
       myEvents.forEach(function (event) {
-        myInput.dispatchEvent(event);
+        $myInput.dispatchEvent(event);
       });
 
-      myInput.value = myInputValue;
-      myInput.focus();
+      $myInput.value = myInputValue;
+      $myInput.focus();
     }
 
     //  starting recording as soon as the window has loaded
@@ -57,7 +57,7 @@
   <h1>Current View: <span class="server">Server Rendered</span><span class="client"></span></h1>
   <div class="buttons">
     <button class="btn bootstrapBtn" onclick="runBootstrap()">Bootstrap</button>
-    <!--<button class="btn replayBtn" onclick="replayEvents()">Replay</button>-->
+    <button class="btn replayBtn" onclick="replayEvents()">Replay</button>
   </div>
 
   <app>

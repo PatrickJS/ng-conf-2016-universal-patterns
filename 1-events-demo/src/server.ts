@@ -24,7 +24,6 @@ app.engine('.html', expressEngine);
 app.set('views', __dirname);
 app.set('view engine', 'html');
 
-
 function ngApp(req, res) {
   res.render('index', {
     directives: [ App ],

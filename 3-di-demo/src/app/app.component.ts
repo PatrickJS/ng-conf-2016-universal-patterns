@@ -71,16 +71,16 @@ export class About {
 export class App {
   data = 'ng-conf';
   // doesn't work on server
-  // store = {
-  //   get: (prop) => {
-  //     return localStorage.getItem(prop);
-  //   },
-  //   set(prop, value) {
-  //     return localStorage.setItem(prop, value);
-  //   }
-  // };
+  store = {
+    get(prop) {
+      return localStorage.getItem(prop);
+    },
+    set(prop, value) {
+      return localStorage.setItem(prop, value);
+    }
+  };
   constructor(
-    public store: Store
+    // public store: Store
   ) {
 
   }

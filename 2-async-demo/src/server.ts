@@ -49,7 +49,7 @@ function ngApp(req, res) {
       NODE_HTTP_PROVIDERS,
     ],
 
-    async: true,
+    async: false,
 
     preboot: false
   };

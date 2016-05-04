@@ -1,15 +1,21 @@
+import 'angular2-universal/polyfills';
+
 import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
-
 // Angular 2 Universal
-import 'angular2-universal/polyfills';
-import {provide, expressEngine, ORIGIN_URL, enableProdMode} from 'angular2-universal';
-enableProdMode();
+import {
+  provide,
+  expressEngine,
+  ORIGIN_URL,
+  enableProdMode
+} from 'angular2-universal';
+
 // Application
 import {App} from './app/app.component';
 
+enableProdMode();
 const app = express();
 const ROOT = path.join(path.resolve(__dirname, '..'));
 

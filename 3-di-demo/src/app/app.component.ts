@@ -6,7 +6,6 @@ import {Http} from 'angular2/http';
 
 import {Store} from '../universal-store/src/store';
 
-
 @Directive({
   selector: '[autofocus]'
 })
@@ -81,7 +80,22 @@ export class About {
 ])
 export class App {
   data = 'ng-conf';
-  constructor(public store: Store) {
+  store = {
+    get: (prop) => {
+      // TODO(gdi2290): isNode, isBrowser
+      if (typeof localStorage !== undefined) {
+        return localStorage.getItem(prop);
+      }
+    },
+    set(prop, value) {
+      if (typeof localStorage !== undefined) {
+        return localStorage.setItem(prop, value);
+      }
+    }
+  };
+  constructor(
+    // public store: Store
+  ) {
 
   }
 
@@ -92,3 +106,20 @@ export class App {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+@Component({
+  selector: 'app',
+  template: 'Loading...'
+})
+export class Noop {}

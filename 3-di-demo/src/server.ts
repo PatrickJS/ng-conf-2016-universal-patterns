@@ -1,9 +1,10 @@
+import 'angular2-universal/polyfills';
+
 import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
 // Angular 2 Universal
-import 'angular2-universal/polyfills';
 import {
   provide,
   enableProdMode,
@@ -19,7 +20,7 @@ import {
 import {NODE_STORE_PROVIDERS} from './universal-store/src/node';
 
 // Application
-import {App} from './app/app.component';
+import {App, Noop} from './app/app.component';
 
 const app = express();
 const ROOT = path.join(path.resolve(__dirname, '..'));

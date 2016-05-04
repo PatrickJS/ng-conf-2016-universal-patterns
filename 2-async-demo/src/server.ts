@@ -1,9 +1,10 @@
+import 'angular2-universal/polyfills';
+
 import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
 // Angular 2 Universal
-import 'angular2-universal/polyfills';
 import {
   provide,
   enableProdMode,
@@ -48,7 +49,7 @@ function ngApp(req, res) {
       NODE_HTTP_PROVIDERS,
     ],
 
-    async: true,
+    async: false,
 
     preboot: false
   };
